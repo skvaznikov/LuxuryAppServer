@@ -23,5 +23,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/LuxuryAppDB"/>
 	<classpathentry kind="lib" path="E:/workspaceLuxury/libraries/httpclient-4.5.2.jar"/>
 	<classpathentry kind="lib" path="E:/workspaceLuxury/libraries/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="E:/workspaceLuxury/LuxuryApp/WebContent/WEB-INF/lib/json-20160212.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

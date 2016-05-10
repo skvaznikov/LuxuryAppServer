@@ -8,10 +8,12 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.TypedQuery;
 
+import model.Coupon;
 import model.Couponbook;
 
 /**
@@ -36,12 +38,31 @@ public class CouponsEJB {
     public CouponsEJB() {
         // TODO Auto-generated constructor stub
     }
-    public List<Couponbook> getAllCoupons() {
-    	List<Couponbook> results = new ArrayList<Couponbook>();
-    	EntityManager entityManager = entityManagerFactory.createEntityManager();
-	    TypedQuery<Couponbook> query = entityManager.createNamedQuery("Couponbook.findAll", Couponbook.class);
+    public List<Coupon> getAllCoupons() {
+    	List<Coupon> results = new ArrayList<Coupon>();
+ 	   EntityManager entityManager = entityManagerFactory.createEntityManager();
+	    TypedQuery<Coupon> query = entityManager.createNamedQuery("Coupon.findAll", Coupon.class);
+	    results = query.getResultList();
+    	return results;
+    }
+    
+    public List<Coupon> getLocaleCoupons(String city) {
+    	List<Coupon> results = new ArrayList<Coupon>();
+ 	   EntityManager entityManager = entityManagerFactory.createEntityManager();
+	    TypedQuery<Coupon> query = entityManager.createNamedQuery("Coupon.findLocale", Coupon.class).setParameter("city", city);
 	    results = query.getResultList();
     	return results;
     }
 
+    public void addNewCoupon(String... params) {
+    	Coupon newCoupon = new Coupon();
+    	newCoupon.setName(params[0]);
+    	newCoupon.setDescription(params[1]);
+    	newCoupon.setLocation(params[2]);	   
+    	EntityManager entityManager = entityManagerFactory.createEntityManager();
+    //	EntityTransaction   tx = entityManager.getTransaction();
+    //	tx.begin();   
+    	entityManager.persist(newCoupon);
+   // 	tx.commit();
+    }
 }

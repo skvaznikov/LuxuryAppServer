@@ -1,0 +1,21 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body background="./image.jpg">
+<h:form enctype="multipart/form-data">	
+		<table border="0" width="100%">
+		  <tr><td>Name</td><td><h:inputText size="50" maxlength="50" name="Name" value="#{couponController.coupon.name}"/></td></tr>
+		  <tr><td>Bezeichnung</td><td><h:inputText size="50" maxlength="50" name="Bezeichnung" value="#{couponController.coupon.description}" /></td></tr>
+		  <tr><td>Location</td><td><h:inputText size="50" maxlength="50" name="Location" value="#{couponController.coupon.location}"/></td></tr>
+		  
+		</table>
+<h:commandButton value="hallo" action="#{couponController.createCoupon}"
+			id="c1" type="submit"></h:commandButton>
+</h:form>
+		
+</body>
+</html>
